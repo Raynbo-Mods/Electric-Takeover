@@ -4,12 +4,15 @@ using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
+using System.ComponentModel;
 
 namespace Eco.Mods.TechTree
 {
     [Serialized]
     [MaxStackSize(1)]
     [Weight(1000)]
+    [Category("Power")]
+    [LocDisplayName("Electric Upgrade Kit")]
     [Tag("Utility")]
     public partial class ElectricUpgradeKitItem : Item
     {

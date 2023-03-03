@@ -105,6 +105,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))]
+    [RequireComponent(typeof(StorageComponent))]
     [RequireComponent(typeof(BatterySupplyComponent))]
     [RequireComponent(typeof(BatteryConsumptionComponent))]
     [RequireComponent(typeof(MovableLinkComponent))]

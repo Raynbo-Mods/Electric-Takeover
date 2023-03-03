@@ -88,7 +88,7 @@ namespace Eco.Mods.TechTree
         private ElectricSteamTruckObject() { }
         protected override void Initialize()
         {
-            base.Initialize();         
+            base.Initialize();      
             this.GetComponent<CustomTextComponent>().Initialize(200);
             this.GetComponent<BatterySupplyComponent>().Initialize(1);
             this.GetComponent<BatteryConsumptionComponent>().Initialize(this.GetComponent<BatterySupplyComponent>(), 25);

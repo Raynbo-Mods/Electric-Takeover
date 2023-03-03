@@ -4,6 +4,8 @@ using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
+using System.ComponentModel;
+
 namespace Eco.Mods.TechTree
 {
 
@@ -11,6 +13,7 @@ namespace Eco.Mods.TechTree
     [LocDisplayName("Nuclear Battery")]
     [Weight(2000)]
     [Tag("Batteries")]
+    [Category("Power")]
     [Ecopedia("Items", "Tools", createAsSubPage: true)]
     public partial class NuclearBatteryItem : BatteryItem
     {

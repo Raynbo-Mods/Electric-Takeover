@@ -19,6 +19,7 @@
     using Eco.Shared.View;
     using Eco.Shared.Networking;
     using static Eco.Gameplay.Disasters.DisasterPlugin;
+    using Eco.Core.Systems;
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent))]
@@ -38,8 +39,10 @@
         [Serialized] public BatteryStatusTypes BatteryStatus { get; private set; }
         [SyncToView] public bool ForceActiveTab => true;
         public override Inventory Inventory => BatterySupply;
+        public bool Discharging = false;
+        public bool Charging = false;
 
-        public override bool Enabled => this.CurrentBattery != null && this.Parent.GetComponent<OnOffComponent>().On && this.BatteryStatus != BatteryStatusTypes.LowDischargeRate && this.BatteryStatus != BatteryStatusTypes.Empty;
+        public override bool Enabled => this.CurrentBattery != null && this.BatteryStatus != BatteryStatusTypes.LowDischargeRate && (( this.BatteryStatus != BatteryStatusTypes.Empty && this.Discharging) || (this.BatteryStatus != BatteryStatusTypes.Full && this.Charging) || (this.BatteryStatus != BatteryStatusTypes.Full && this.BatteryStatus != BatteryStatusTypes.Empty));
 
         private float energyUsedLastTick;
 
@@ -107,20 +110,12 @@
             this.BatterySupply.Modify(changeSet =>
             {
                 this.BatterySupply.NonEmptyStacks.ForEach<ItemStack>((itemStack) => {
-                    if (CurrentBattery == null || CurrentBattery.currentCharge <= 0)
+                    if (CurrentBattery == null)
                     {
                         if (itemStack.Item != null)
                         {
                             this.CurrentBattery = (BatteryItem)itemStack.Item;
-                            if (this.CurrentBattery.currentCharge <= 0 && this.CurrentBattery.batteryStatus == BatteryStatusTypes.Empty)
-                            {
-                                this.CurrentBattery = null;
-                                this.Energy = 0;
-                            }
-                            else
-                            {
-                                this.Energy = this.CurrentBattery.currentCharge;
-                            }
+                            this.Energy = this.CurrentBattery.currentCharge;
                         }
                     }
                     else
@@ -176,7 +171,11 @@
             }
             this.status.SetStatusMessage(this.Enabled, operational, error);
         }
-
+        public override void Tick()
+        {
+            this.UpdateStatus();
+            base.Tick();
+        }
         public override void LateTick()
         {
             this.ConsumptionRate = this.energyUsedLastTick / ServiceHolder<IWorldObjectManager>.Obj.TickDeltaTime;
@@ -184,9 +183,11 @@
         }
         public void Charge(float time, float watts)
         {
+            this.Charging = true;
+            this.Discharging = false;
             lock (this.BatteryLock)
             {
-                if (this.CurrentBattery != null && this.CurrentBattery.currentCharge < this.CurrentBattery.MaxCapacity && this.Enabled && this.Parent.Enabled)
+                if (this.CurrentBattery != null && this.CurrentBattery.currentCharge < this.CurrentBattery.MaxCapacity && this.Enabled && this.Parent.GetOrCreateComponent<PowerConsumptionComponent>().Enabled && this.Parent.GetOrCreateComponent<OnOffComponent>().On)
                 {
                     this.BatteryStatus = this.CurrentBattery.Charge((time * watts), time);
                     this.Energy = CurrentBattery.currentCharge;
@@ -195,15 +196,16 @@
                 {
                     (this.BatteryStatus, this.Energy) = this.CurrentBattery.Update();
                 }
-                UpdateStatus();
             }
         }
         
         public void Discharge(float time, float watts)
         {
+            this.Discharging = true;
+            this.Charging = false;
             lock (this.BatteryLock)
             {
-                if (this.CurrentBattery != null && this.CurrentBattery.currentCharge > 0 && this.Enabled && this.Parent.Enabled)
+                if (this.CurrentBattery != null && this.CurrentBattery.currentCharge > 0 && this.Enabled && this.Parent.Operating)
                 {
                     this.BatteryStatus = this.CurrentBattery.Discharge((time * watts), time);
                     this.Energy = CurrentBattery.currentCharge;
@@ -214,11 +216,12 @@
                     if (this.CurrentBattery != null)
                     {
                         (this.BatteryStatus, this.Energy) = this.CurrentBattery.Update();
+                    } else
+                    {
                     }
                     this.Energy = 0;
                     this.energyUsedLastTick = 0;
                 }
-                UpdateStatus();
             }
         }
     }

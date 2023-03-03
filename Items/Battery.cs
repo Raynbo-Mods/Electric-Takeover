@@ -20,6 +20,8 @@ using Eco.Gameplay.Garbage;
 using Eco.Gameplay.Interactions;
 using Eco.Gameplay.GameActions;
 using Eco.Core.Controller;
+using Eco.Shared.Icons;
+using Eco.Gameplay.Blocks;
 
 namespace Eco.Mods.TechTree
 {
@@ -29,7 +31,7 @@ namespace Eco.Mods.TechTree
     [MaxStackSize(1)]
     [Ecopedia("Items", "Batteries")]
     [Category("Hidden")]
-    public class BatteryItem : Item
+    public class BatteryItem : ToolItem
     {
         public static readonly ThreadSafeAction<BatteryItem> ChargeChanged = new ThreadSafeAction<BatteryItem>();
         public override LocString DisplayDescription { get { return Localizer.DoStr("A item used to store electric energy."); } }

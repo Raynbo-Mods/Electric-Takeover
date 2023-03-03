@@ -51,7 +51,7 @@ namespace Eco.Mods.TechTree
     /// <remarks>
     /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
-    /// </remarks>
+    /// </remarks>w
     [RequiresSkill(typeof(IndustrySkill), 3)]
     [Ecopedia("Crafted Objects", "Vehicles", subPageName: "ElectricSkidSteer Item")]
     public partial class ElectricSkidSteerRecipe : RecipeFamily
@@ -105,6 +105,7 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [RequireComponent(typeof(StandaloneAuthComponent))]
+    [RequireComponent(typeof(StorageComponent))]
     [RequireComponent(typeof(BatterySupplyComponent))]
     [RequireComponent(typeof(BatteryConsumptionComponent))]
     [RequireComponent(typeof(MovableLinkComponent))]

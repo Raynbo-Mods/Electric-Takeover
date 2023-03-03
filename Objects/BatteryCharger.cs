@@ -23,7 +23,7 @@
         public override LocString DisplayName => Localizer.DoStr("Battery Charger");
         static BatteryChargerObject()
         {
-            WorldObject.AddOccupancy<BatteryChargerObject>(new List<BlockOccupancy>(){
+            BatteryChargerObject.AddOccupancy<BatteryChargerObject>(new List<BlockOccupancy>(){
             new BlockOccupancy(new Vector3i(0, 0, 0)),
             new BlockOccupancy(new Vector3i(0, 1, 0)),
             new BlockOccupancy(new Vector3i(1, 0, 0)),
@@ -32,6 +32,16 @@
             new BlockOccupancy(new Vector3i(0, 1, 1)),
             new BlockOccupancy(new Vector3i(1, 0, 1)),
             new BlockOccupancy(new Vector3i(1, 1, 1)),
+            new BlockOccupancy(new Vector3i(2, 1, 2)),
+            new BlockOccupancy(new Vector3i(2, 0, 2)),
+            new BlockOccupancy(new Vector3i(0, 0, 2)),
+            new BlockOccupancy(new Vector3i(0, 1, 2)),
+            new BlockOccupancy(new Vector3i(0, 0, 2)),
+            new BlockOccupancy(new Vector3i(0, 1, 2)),
+            new BlockOccupancy(new Vector3i(2, 0, 0)),
+            new BlockOccupancy(new Vector3i(2, 1, 0)),
+            new BlockOccupancy(new Vector3i(2, 0, 0)),
+            new BlockOccupancy(new Vector3i(2, 1, 0)),
             });
         }
         protected override void Initialize()

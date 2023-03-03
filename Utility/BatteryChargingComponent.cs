@@ -35,24 +35,20 @@
         public override void Tick()
         {
             lastTickPowerCost = powerCost;
-            if (this.fuelSupply.CurrentBattery != null && this.fuelSupply.CurrentBattery.currentCharge < this.fuelSupply.CurrentBattery.MaxCapacity)
+            if (this.fuelSupply.CurrentBattery != null)
             {
                 this.fuelSupply.Charge(ServiceHolder<IWorldObjectManager>.Obj.TickDeltaTime, this.WattsPerSecond);
                 this.powerCost = (int)this.fuelSupply.CurrentBattery.lastChangeWatts;
-            }
-            else
-            {
-                this.powerCost = 0;
-            }
-            if (lastTickPowerCost != powerCost)
-            {
-                if (powerCost > 0)
+                if (lastTickPowerCost != powerCost)
                 {
-                    this.Parent.GetOrCreateComponent<PowerConsumptionComponent>().OverridePowerConsumption(powerCost + 50);
-                }
-                else
-                {
-                    this.Parent.GetOrCreateComponent<PowerConsumptionComponent>().OverridePowerConsumption(0);
+                    if (powerCost > 0)
+                    {
+                        this.Parent.GetOrCreateComponent<PowerConsumptionComponent>().OverridePowerConsumption(powerCost + 50);
+                    }
+                    else
+                    {
+                        this.Parent.GetOrCreateComponent<PowerConsumptionComponent>().OverridePowerConsumption(0);
+                    }
                 }
             }
         }

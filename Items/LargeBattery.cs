@@ -4,12 +4,15 @@ using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
+using System.ComponentModel;
+
 namespace Eco.Mods.TechTree
 {
 
     [Serialized]
     [LocDisplayName("Large Battery")]
     [Weight(1000)]
+    [Category("Power")]
     [Tag("Batteries")]
     [Ecopedia("Items", "Tools", createAsSubPage: true)]
     public partial class LargeBatteryItem : BatteryItem
