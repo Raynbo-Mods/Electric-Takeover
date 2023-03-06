@@ -4,9 +4,10 @@ using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
+using Eco.Mods.TechTree;
 using System.ComponentModel;
 
-namespace Eco.Mods.TechTree
+namespace Eco.ET.TechTree
 {
 
     [Serialized]

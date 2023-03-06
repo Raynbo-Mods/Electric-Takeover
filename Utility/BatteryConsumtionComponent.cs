@@ -1,4 +1,4 @@
-﻿namespace Eco.Gameplay.Components
+﻿namespace Eco.ET.Components
 {
     using Eco.Core.Controller;
     using Eco.Gameplay.Objects;

@@ -1,5 +1,5 @@
 ﻿using Eco.World.Blocks;
-namespace Eco.RM.Utility
+namespace Eco.ET.Utility
 {
     public class Electric : BlockAttribute
     {

@@ -1,11 +1,12 @@
-﻿namespace Eco.Gameplay.Components
+﻿namespace Eco.ET.Components
 {
     using Eco.Core.Controller;
     using Eco.Gameplay.Objects;
     using Eco.Shared.IoC;
     using Eco.Shared.Serialization;
+    using Eco.Gameplay.Components;
+    using Eco.ET.TechTree;
     using Eco.Shared.Localization;
-    using Eco.RM.Utility;
 
     [Serialized]
     [LocDisplayName("Battery Charge")]

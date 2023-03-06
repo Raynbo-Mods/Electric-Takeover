@@ -2,14 +2,14 @@
 using Eco.Shared.Items;
 using Eco.Shared.Localization;
 using Eco.Shared.Utils;
-using Eco.Mods.TechTree;
+using Eco.ET.TechTree;
 using Eco.Shared.IoC;
-using Eco.RM.Utility;
+using Eco.ET.Utility;
 using Eco.Gameplay.Systems.NewTooltip;
 using Eco.Gameplay.Systems.Tooltip;
-using Eco.Gameplay.Components;
+using Eco.Gameplay.Systems.NewTooltip.TooltipLibraryFiles;
 
-namespace Eco.Gameplay.Systems.NewTooltip.TooltipLibraryFiles
+namespace Eco.ET.ToolTips
 {
     [TooltipLibrary] public static class ElectricTooltipLibrary
     {

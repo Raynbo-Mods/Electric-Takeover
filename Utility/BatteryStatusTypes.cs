@@ -1,6 +1,6 @@
 ﻿using Eco.Shared.Serialization;
 
-namespace Eco.RM.Utility
+namespace Eco.ET.Utility
 {
     [Serialized] public enum BatteryStatusTypes
     {

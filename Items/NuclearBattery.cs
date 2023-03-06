@@ -2,11 +2,12 @@
 using Eco.Gameplay.Components;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Skills;
+using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
 using System.ComponentModel;
 
-namespace Eco.Mods.TechTree
+namespace Eco.ET.TechTree
 {
 
     [Serialized]

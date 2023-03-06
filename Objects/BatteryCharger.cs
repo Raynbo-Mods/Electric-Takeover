@@ -1,6 +1,7 @@
-﻿namespace Eco.Mods.TechTree
+﻿namespace Eco.ET.TechTree
 {
     using System;
+    using Eco.ET.Components;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.Items;
@@ -8,6 +9,7 @@
     using Eco.Gameplay.Skills;
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
+    using Eco.Mods.TechTree;
     using Eco.Shared.Serialization;
 
     [Serialized]

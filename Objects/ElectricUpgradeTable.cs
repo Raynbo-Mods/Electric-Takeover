@@ -1,6 +1,7 @@
-﻿namespace Eco.Mods.TechTree
+﻿namespace Eco.ET.TechTree
 {
     using System;
+    using Eco.Mods.TechTree;
     using System.Collections.Generic;
     using Eco.Core.Items;
     using Eco.Gameplay.Components;

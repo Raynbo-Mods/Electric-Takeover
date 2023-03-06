@@ -1,7 +1,9 @@
-﻿namespace Eco.Gameplay.Components
+﻿namespace Eco.ET.Components
 {
     using System.ComponentModel;
     using System.Linq;
+    using Eco.Gameplay.Components;
+    using Eco.ET.TechTree;
     using Eco.Core.Controller;
     using Eco.Core.Utils;
     using Eco.Gameplay.Interactions;
@@ -13,7 +15,7 @@
     using Eco.Shared.IoC;
     using static Eco.Gameplay.Items.AuthorizationInventory;
     using Eco.Mods.TechTree;
-    using Eco.RM.Utility;
+    using Eco.ET.Utility;
     using Eco.Shared.Utils;
     using Eco.Gameplay.Economy;
     using Eco.Shared.View;

@@ -1,5 +1,5 @@
 ﻿using C5;
-using Eco.RM.Utility;
+using Eco.ET.Utility;
 using Eco.Core.ElasticSearch;
 using Eco.Core.Items;
 using Eco.Core.Utils;
@@ -23,7 +23,7 @@ using Eco.Core.Controller;
 using Eco.Shared.Icons;
 using Eco.Gameplay.Blocks;
 
-namespace Eco.Mods.TechTree
+namespace Eco.ET.TechTree
 {
     [Serialized]
     [LocDisplayName("Battery")]
